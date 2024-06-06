@@ -157,10 +157,10 @@ class ColorPicker extends StatefulWidget {
   final ValueChanged<List<Color>>? onHistoryChanged;
 
   @override
-  State<ColorPicker> createState() => _ColorPickerState();
+  State<ColorPicker> createState() => ColorPickerState();
 }
 
-class _ColorPickerState extends State<ColorPicker> {
+class ColorPickerState extends State<ColorPicker> {
   HSVColor currentHsvColor = const HSVColor.fromAHSV(0.0, 0.0, 0.0, 0.0);
   List<Color> colorHistory = [];
 
@@ -484,11 +484,15 @@ class SlidePicker extends StatefulWidget {
   final BorderRadius indicatorBorderRadius;
 
   @override
-  State<StatefulWidget> createState() => _SlidePickerState();
+  State<StatefulWidget> createState() => SlidePickerState();
 }
 
-class _SlidePickerState extends State<SlidePicker> {
+class SlidePickerState extends State<SlidePicker> {
   HSVColor currentHsvColor = const HSVColor.fromAHSV(0.0, 0.0, 0.0, 0.0);
+
+  void onColorChanging(HSVColor color) {
+    setState(() => currentHsvColor = color);
+  }
 
   @override
   void initState() {
@@ -666,10 +670,10 @@ class HueRingPicker extends StatefulWidget {
   final BorderRadius pickerAreaBorderRadius;
 
   @override
-  State<HueRingPicker> createState() => _HueRingPickerState();
+  State<HueRingPicker> createState() => HueRingPickerState();
 }
 
-class _HueRingPickerState extends State<HueRingPicker> {
+class HueRingPickerState extends State<HueRingPicker> {
   HSVColor currentHsvColor = const HSVColor.fromAHSV(0.0, 0.0, 0.0, 0.0);
 
   @override

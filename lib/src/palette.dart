@@ -616,6 +616,13 @@ class TrackPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final Rect rect = Offset.zero & size;
     if (trackType == TrackType.alpha) {
+      // final List<Color> colors = [
+      //   Colors.white,
+      //   Colors.black,
+      // ];
+      // Gradient gradient = LinearGradient(colors: colors);
+      // canvas.drawRect(rect, Paint()..shader = gradient.createShader(rect));
+      //
       final Size chessSize = Size(size.height / 2, size.height / 2);
       Paint chessPaintB = Paint()..color = const Color(0xffcccccc);
       Paint chessPaintW = Paint()..color = Colors.white;
@@ -1062,7 +1069,12 @@ class ColorPickerSlider extends StatelessWidget {
       case TrackType.blue:
         onColorChanged(HSVColor.fromColor(hsvColor.toColor().withBlue((progress * 0xff).round())));
         break;
+      // case TrackType.alpha:
+      //   onColorChanged(hsvColor.withAlpha(localDx.clamp(0.0, box.maxWidth - 30.0) / (box.maxWidth - 30.0)));
+      //   break;
       case TrackType.alpha:
+        // debugPrint('alpha ${localDx.clamp(0.0, box.maxWidth - 30.0) / (box.maxWidth - 30.0)}');
+        // onColorChanged(hsvColor.withAlpha(100 / 255 * localDx.clamp(0.0, box.maxWidth - 30.0) / (box.maxWidth - 30.0)));
         onColorChanged(hsvColor.withAlpha(localDx.clamp(0.0, box.maxWidth - 30.0) / (box.maxWidth - 30.0)));
         break;
     }
